@@ -1,0 +1,8 @@
+\\srvdat01\pdata\home\sebrun\dokumente\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Main.resources
+\\srvdat01\pdata\home\sebrun\dokumente\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.csproj.GenerateResource.Cache
+\\srvdat01\pdata\home\sebrun\dokumente\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\HeroesLoungeMatchhandler.exe.config
+\\srvdat01\pdata\home\sebrun\dokumente\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\HeroesLoungeMatchhandler.exe
+\\srvdat01\pdata\home\sebrun\dokumente\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\bin\Debug\HeroesLoungeMatchhandler.pdb
+\\srvdat01\pdata\home\sebrun\dokumente\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchhandler.Properties.Resources.resources
+\\srvdat01\pdata\home\sebrun\dokumente\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchhandler.exe
+\\srvdat01\pdata\home\sebrun\dokumente\visual studio 2015\Projects\WindowsFormsApplication1\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchhandler.pdb
