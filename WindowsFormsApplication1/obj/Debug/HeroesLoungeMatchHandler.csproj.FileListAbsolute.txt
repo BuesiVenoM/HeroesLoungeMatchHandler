@@ -18,3 +18,15 @@
 \\srvdat01\pdata\home\sebrun\dokumente\visual studio 2015\Projects\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Debug\Newtonsoft.Json.dll
 \\srvdat01\pdata\home\sebrun\dokumente\visual studio 2015\Projects\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Debug\Newtonsoft.Json.pdb
 \\srvdat01\pdata\home\sebrun\dokumente\visual studio 2015\Projects\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Debug\Newtonsoft.Json.xml
+C:\Users\sebrun\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Debug\HeroesLoungeMatchHandler.exe.config
+C:\Users\sebrun\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.exe
+C:\Users\sebrun\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.pdb
+C:\Users\sebrun\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Debug\HeroesLoungeMatchHandler.exe
+C:\Users\sebrun\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Debug\HeroesLoungeMatchHandler.pdb
+C:\Users\sebrun\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\sebrun\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\sebrun\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Debug\Newtonsoft.Json.xml
+C:\Users\sebrun\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.csprojResolveAssemblyReference.cache
+C:\Users\sebrun\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Main.resources
+C:\Users\sebrun\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.Properties.Resources.resources
+C:\Users\sebrun\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.csproj.GenerateResource.Cache
