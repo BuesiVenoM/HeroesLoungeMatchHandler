@@ -88,7 +88,18 @@ namespace WindowsFormsApplication1
 
         private void get_meta_data(int matchId)
         {
-            String url = "https://heroeslounge.gg/api/v1/matches/" + matchId;
+
+            /*
+             * paths: 
+             * matches https://heroeslounge.gg/api/v1/matches
+             * spec. m https://heroeslounge.gg/api/v1/matches/7
+             * teams to match: https://heroeslounge.gg/api/v1/matches/7/teams
+             * teams https://heroeslounge.gg/api/v1/teams/
+             * spec team: https://heroeslounge.gg/api/v1/team/1
+             * team-pic: https://heroeslounge.gg/api/v1/team/1/logo
+             * */
+            // String url = "https://heroeslounge.gg/api/v1/matches/" + matchId;
+            String url = "https://heroeslounge.gg/api/v1/teams/";
             WebClient wc = new WebClient();
             string data;
             
@@ -100,7 +111,8 @@ namespace WindowsFormsApplication1
                 MissingMemberHandling = MissingMemberHandling.Ignore
             };
 
-            var match = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Match>(data, settings);
+            //var match = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Match>(data, settings);
+            var match = JsonConvert.DeserializeObject(data);
 
         }
     }
