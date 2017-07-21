@@ -14,3 +14,7 @@
 \\srvdat01\pdata\home\sebrun\dokumente\visual studio 2015\Projects\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Main.resources
 \\srvdat01\pdata\home\sebrun\dokumente\visual studio 2015\Projects\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.Properties.Resources.resources
 \\srvdat01\pdata\home\sebrun\dokumente\visual studio 2015\Projects\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.csproj.GenerateResource.Cache
+\\srvdat01\pdata\home\sebrun\dokumente\visual studio 2015\Projects\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.csprojResolveAssemblyReference.cache
+\\srvdat01\pdata\home\sebrun\dokumente\visual studio 2015\Projects\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Debug\Newtonsoft.Json.dll
+\\srvdat01\pdata\home\sebrun\dokumente\visual studio 2015\Projects\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Debug\Newtonsoft.Json.pdb
+\\srvdat01\pdata\home\sebrun\dokumente\visual studio 2015\Projects\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Debug\Newtonsoft.Json.xml

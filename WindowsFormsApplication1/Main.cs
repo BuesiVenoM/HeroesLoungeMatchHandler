@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Net;
+using Newtonsoft.Json;
 
 /*
  * Programmed with love for HeroesLounge. By VenoM
@@ -30,7 +32,8 @@ namespace WindowsFormsApplication1
         {
             System.IO.File.WriteAllText("scoreLeft.txt", Convert.ToString(this.scoreLeft));
             System.IO.File.WriteAllText("scoreRight.txt", Convert.ToString(this.scoreRight));
-            System.IO.File.WriteAllText("matchId.txt", Convert.ToString(this.matchId));
+
+            get_meta_data(matchId);
         }
 
         /// <summary>
@@ -81,6 +84,23 @@ namespace WindowsFormsApplication1
         private void nud_matchId_ValueChanged(object sender, EventArgs e)
         {
             setMatchId(Convert.ToInt32(nud_matchId.Value));
+        }
+
+        private void get_meta_data(int matchId)
+        {
+            String url = "https://heroeslounge.gg/api/v1/matches/" + matchId;
+            WebClient wc = new WebClient();
+            string data;
+            
+            data = wc.DownloadString(url);
+
+            var settings = new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                MissingMemberHandling = MissingMemberHandling.Ignore
+            };
+
+            var match = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Match>(data, settings);
         }
     }
 }
