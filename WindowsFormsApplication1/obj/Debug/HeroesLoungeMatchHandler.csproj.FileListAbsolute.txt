@@ -30,3 +30,15 @@ C:\Users\sebrun\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\o
 C:\Users\sebrun\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Main.resources
 C:\Users\sebrun\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.Properties.Resources.resources
 C:\Users\sebrun\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.csproj.GenerateResource.Cache
+C:\Users\Sebastian\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Debug\HeroesLoungeMatchHandler.exe.config
+C:\Users\Sebastian\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.exe
+C:\Users\Sebastian\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.pdb
+C:\Users\Sebastian\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Debug\HeroesLoungeMatchHandler.exe
+C:\Users\Sebastian\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Debug\HeroesLoungeMatchHandler.pdb
+C:\Users\Sebastian\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Sebastian\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\Sebastian\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Sebastian\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.csprojResolveAssemblyReference.cache
+C:\Users\Sebastian\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Main.resources
+C:\Users\Sebastian\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.Properties.Resources.resources
+C:\Users\Sebastian\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.csproj.GenerateResource.Cache

@@ -98,12 +98,12 @@ namespace WindowsFormsApplication1
              * spec team: https://heroeslounge.gg/api/v1/team/1
              * team-pic: https://heroeslounge.gg/api/v1/team/1/logo
              * */
-            // String url = "https://heroeslounge.gg/api/v1/matches/" + matchId;
-            String url = "https://heroeslounge.gg/api/v1/teams/";
+            string matchdata;
+            string matchteamsdata;
+            string specteamdatal;
+            string specteampicdata;
+
             WebClient wc = new WebClient();
-            string data;
-            
-            data = wc.DownloadString(url);
 
             var settings = new JsonSerializerSettings
             {
@@ -111,9 +111,28 @@ namespace WindowsFormsApplication1
                 MissingMemberHandling = MissingMemberHandling.Ignore
             };
 
-            //var match = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Match>(data, settings);
-            var match = JsonConvert.DeserializeObject(data);
+            String matchurl = "https://heroeslounge.gg/api/v1/matches/" + matchId;
+            matchdata = wc.DownloadString(matchurl);
+            String matchteamsurl = matchurl + "/teams";
+            String specteamurl = "https://heroeslounge.gg/api/v1/team/1";
+            String specteampicurl = "https://heroeslounge.gg/api/v1/team/1/logo";
+            
+            
+            
+            
+            matchteamsdata = wc.DownloadString(matchteamsurl);
+            //specteamdatal = wc.DownloadString(specteamurl);
+            //specteampicdata = wc.DownloadString(specteampicurl);
 
+
+            
+
+            //var match = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Match>(data, settings);
+            var match = JsonConvert.DeserializeObject(matchdata);
+            var matchteams = JsonConvert.DeserializeObject(matchteamsdata);
+            //var specteam = JsonConvert.DeserializeObject(specteamdatal);
+            //var specteampic = JsonConvert.DeserializeObject(specteampicdata);
+            
         }
     }
 }
