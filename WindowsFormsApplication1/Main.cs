@@ -98,8 +98,7 @@ namespace WindowsFormsApplication1
              * spec team: https://heroeslounge.gg/api/v1/team/1
              * team-pic: https://heroeslounge.gg/api/v1/team/1/logo
              * */
-            string matchdata;
-            string matchteamsdata;
+
             string specteamdatal;
             string specteampicdata;
 
@@ -112,15 +111,20 @@ namespace WindowsFormsApplication1
             };
 
             String matchurl = "https://heroeslounge.gg/api/v1/matches/" + matchId;
-            matchdata = wc.DownloadString(matchurl);
+            String matchteamsurl = matchurl + "/teams";
+            
+            var matchdata = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Match>(wc.DownloadString(matchurl), settings);
+
+            var matchteamsdata = JsonConvert.DeserializeObject(wc.DownloadString(matchteamsurl), settings);
+            /**
             String matchteamsurl = matchurl + "/teams";
             String specteamurl = "https://heroeslounge.gg/api/v1/team/1";
             String specteampicurl = "https://heroeslounge.gg/api/v1/team/1/logo";
+            **/
             
             
             
-            
-            matchteamsdata = wc.DownloadString(matchteamsurl);
+            //matchteamsdata = wc.DownloadString(matchteamsurl);
             //specteamdatal = wc.DownloadString(specteamurl);
             //specteampicdata = wc.DownloadString(specteampicurl);
 
@@ -128,8 +132,8 @@ namespace WindowsFormsApplication1
             
 
             //var match = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Match>(data, settings);
-            var match = JsonConvert.DeserializeObject(matchdata);
-            var matchteams = JsonConvert.DeserializeObject(matchteamsdata);
+            //var match = JsonConvert.DeserializeObject(matchdata);
+            //var matchteams = JsonConvert.DeserializeObject(matchteamsdata);
             //var specteam = JsonConvert.DeserializeObject(specteamdatal);
             //var specteampic = JsonConvert.DeserializeObject(specteampicdata);
             
