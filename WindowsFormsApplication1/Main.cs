@@ -114,8 +114,10 @@ namespace WindowsFormsApplication1
             String matchteamsurl = matchurl + "/teams";
             
             var matchdata = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Match>(wc.DownloadString(matchurl), settings);
-
-            var matchteamsdata = JsonConvert.DeserializeObject(wc.DownloadString(matchteamsurl), settings);
+            var test = wc.DownloadString(matchteamsurl);
+            var matchteamsdata = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Team>(test, settings);
+            
+            
             /**
             String matchteamsurl = matchurl + "/teams";
             String specteamurl = "https://heroeslounge.gg/api/v1/team/1";
