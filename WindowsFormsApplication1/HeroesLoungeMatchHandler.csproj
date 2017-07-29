@@ -79,6 +79,7 @@
     </Compile>
     <Compile Include="Match.cs" />
     <Compile Include="Matchteams.cs" />
+    <Compile Include="Picture.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Main.resx">

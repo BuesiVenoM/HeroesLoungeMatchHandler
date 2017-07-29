@@ -10,7 +10,6 @@ namespace HeroesLoungeMatchHandler
         public int match_id { get; set; }
         public int team_id { get; set; }
         public int team_score { get; set; }
-
     }
 
     public class Team
