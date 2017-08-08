@@ -124,6 +124,11 @@
             // 
             this.nud_matchId.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.nud_matchId.Location = new System.Drawing.Point(78, 201);
+            this.nud_matchId.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
             this.nud_matchId.Name = "nud_matchId";
             this.nud_matchId.Size = new System.Drawing.Size(120, 20);
             this.nud_matchId.TabIndex = 10;
