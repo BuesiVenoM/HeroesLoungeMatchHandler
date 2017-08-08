@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Net;
 using System.Windows.Forms;
+using HeroesLoungeMatchHandler.Properties;
 
 /*
  * Programmed with love for HeroesLounge. By VenoM
@@ -18,13 +19,16 @@ namespace WindowsFormsApplication1
         private string teamLeft = "";
         private string teamRight = "";
         private string streamTitle = "";
-
+        private string path = "";
         
-        conf
+        
+        
 
         public Main()
         {
+            path = Settings.Default.Output;
             InitializeComponent();
+            
         }
 
         /// <summary>
@@ -32,15 +36,14 @@ namespace WindowsFormsApplication1
         /// </summary>
         private void btn_refresh_Click(object sender, EventArgs e)
         {
-            return String.(ConfigurationSettings.AppSettings["Output"]);
-
+            
             get_meta_data(matchId);
             streamTitle = teamLeft + " vs. " + teamRight;
-            System.IO.File.WriteAllText("scoreLeft.txt", Convert.ToString(this.scoreLeft));
-            System.IO.File.WriteAllText("scoreRight.txt", Convert.ToString(this.scoreRight));
-            System.IO.File.WriteAllText("teamLeft.txt", Convert.ToString(this.teamLeft));
-            System.IO.File.WriteAllText("teamRight.txt", Convert.ToString(this.teamRight));
-            System.IO.File.WriteAllText("streamTitle.txt", Convert.ToString(this.streamTitle));
+            System.IO.File.WriteAllText(path + "scoreLeft.txt", Convert.ToString(this.scoreLeft));
+            System.IO.File.WriteAllText(path + "scoreRight.txt", Convert.ToString(this.scoreRight));
+            System.IO.File.WriteAllText(path + "teamLeft.txt", Convert.ToString(this.teamLeft));
+            System.IO.File.WriteAllText(path + "teamRight.txt", Convert.ToString(this.teamRight));
+            System.IO.File.WriteAllText(path + "streamTitle.txt", Convert.ToString(this.streamTitle));
             
         }
 
@@ -133,8 +136,10 @@ namespace WindowsFormsApplication1
 
             var teamPicLeft = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Picture>(wc.DownloadString(urlTeamPicLeft), settings);
             var teamPicRight = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Picture>(wc.DownloadString(urlTeamPicRight), settings);
-            wc.DownloadFile(new Uri(teamPicLeft.path), @"C:/teamLeft.png");
-            wc.DownloadFile(new Uri(teamPicRight.path), @"teamRight.png");
+            //wc.DownloadFile(new Uri(teamPicLeft.path), @"C:/teamLeft.png");
+            //wc.DownloadFile(new Uri(teamPicRight.path), @"teamRight.png");
+            wc.DownloadFile(new Uri(teamPicLeft.path), path + @"teamLeft.png");
+            wc.DownloadFile(new Uri(teamPicRight.path), path + @"teamRight.png");
         }
     }
 }

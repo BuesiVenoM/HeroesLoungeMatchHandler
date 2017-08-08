@@ -23,15 +23,12 @@ namespace HeroesLoungeMatchHandler.Properties {
             }
         }
         
-        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("C:\\stream-heroeslounge")]
+        [global::System.Configuration.DefaultSettingValueAttribute("C:\\stream-heroeslounge\\")]
         public string Output {
             get {
                 return ((string)(this["Output"]));
-            }
-            set {
-                this["Output"] = value;
             }
         }
     }
