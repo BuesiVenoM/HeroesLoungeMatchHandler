@@ -33,14 +33,17 @@ namespace WindowsFormsApplication1
         /// </summary>
         private void btn_refresh_Click(object sender, EventArgs e)
         {
-            
             get_meta_data(matchId);
             streamTitle = teamLeft + " vs. " + teamRight;
-            System.IO.File.WriteAllText(path + "scoreLeft.txt", Convert.ToString(this.scoreLeft));
-            System.IO.File.WriteAllText(path + "scoreRight.txt", Convert.ToString(this.scoreRight));
             System.IO.File.WriteAllText(path + "teamLeft.txt", Convert.ToString(this.teamLeft));
             System.IO.File.WriteAllText(path + "teamRight.txt", Convert.ToString(this.teamRight));
             System.IO.File.WriteAllText(path + "streamTitle.txt", Convert.ToString(this.streamTitle));
+        }
+
+        private void btn_setScore_Click(object sender, EventArgs e)
+        {
+            System.IO.File.WriteAllText(path + "scoreLeft.txt", Convert.ToString(this.scoreLeft));
+            System.IO.File.WriteAllText(path + "scoreRight.txt", Convert.ToString(this.scoreRight));
         }
 
         /// <summary>
@@ -138,6 +141,11 @@ namespace WindowsFormsApplication1
             var teamPicRight = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Picture>(wc.DownloadString(urlTeamPicRight), settings);
             wc.DownloadFile(new Uri(teamPicLeft.path), path + @"teamLeft.png");
             wc.DownloadFile(new Uri(teamPicRight.path), path + @"teamRight.png");
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
