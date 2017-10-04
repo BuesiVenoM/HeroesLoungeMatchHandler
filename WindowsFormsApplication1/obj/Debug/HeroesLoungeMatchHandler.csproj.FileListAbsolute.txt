@@ -41,3 +41,4 @@ C:\Users\Sebastian\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication
 C:\Users\Sebastian\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Main.resources
 C:\Users\Sebastian\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.Properties.Resources.resources
 C:\Users\Sebastian\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.csproj.GenerateResource.Cache
+C:\Users\Sebastian\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.csprojResolveAssemblyReference.cache

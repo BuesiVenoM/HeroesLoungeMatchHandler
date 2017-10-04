@@ -1,7 +1,6 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.Configuration;
 using System.Net;
 using System.Windows.Forms;
 using HeroesLoungeMatchHandler.Properties;
@@ -20,12 +19,13 @@ namespace WindowsFormsApplication1
         private string teamRight = "";
         private string streamTitle = "";
         private string path = "";
-     
+        private int maxTeamNameLength = 0;
+
         public Main()
         {
             path = Settings.Default.Output;
+            maxTeamNameLength = Settings.Default.MaxTeamTitleLength;
             InitializeComponent();
-            
         }
 
         /// <summary>
@@ -33,6 +33,7 @@ namespace WindowsFormsApplication1
         /// </summary>
         private void btn_refresh_Click(object sender, EventArgs e)
         {
+            System.IO.Directory.CreateDirectory(path);
             get_meta_data(matchId);
             streamTitle = teamLeft + " vs. " + teamRight;
             System.IO.File.WriteAllText(path + "teamLeft.txt", Convert.ToString(this.teamLeft));
@@ -42,6 +43,7 @@ namespace WindowsFormsApplication1
 
         private void btn_setScore_Click(object sender, EventArgs e)
         {
+            System.IO.Directory.CreateDirectory(path);
             System.IO.File.WriteAllText(path + "scoreLeft.txt", Convert.ToString(this.scoreLeft));
             System.IO.File.WriteAllText(path + "scoreRight.txt", Convert.ToString(this.scoreRight));
         }
@@ -131,6 +133,13 @@ namespace WindowsFormsApplication1
             /* setting the Teams*/
             teamLeft = matchteamsdata[0].title;
             teamRight = matchteamsdata[1].title;
+
+            /* Check teamTitle-length and saving the Short-Version if its longer than in config */
+            if(teamLeft.Length > maxTeamNameLength || teamRight.Length > maxTeamNameLength)
+            {
+                teamLeft = matchteamsdata[0].slug;
+                teamRight = matchteamsdata[1].slug;
+            }
 
             /* generate team-logos */
             String urlTeamPicLeft = "https://heroeslounge.gg/api/v1/teams/" + matchteamsdata[0].id + "/logo";
