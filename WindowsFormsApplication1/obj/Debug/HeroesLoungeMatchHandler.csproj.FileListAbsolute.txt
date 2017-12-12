@@ -42,3 +42,16 @@ C:\Users\Sebastian\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication
 C:\Users\Sebastian\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.Properties.Resources.resources
 C:\Users\Sebastian\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.csproj.GenerateResource.Cache
 C:\Users\Sebastian\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.csprojResolveAssemblyReference.cache
+C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Debug\HeroesLoungeMatchHandler.exe.config
+C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Debug\HeroesLoungeMatchHandler.exe
+C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Debug\HeroesLoungeMatchHandler.pdb
+C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Debug\Newtonsoft.Json.dll
+C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Debug\Newtonsoft.Json.pdb
+C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Debug\Newtonsoft.Json.xml
+C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.csprojResolveAssemblyReference.cache
+C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Main.resources
+C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.Properties.Resources.resources
+C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.csproj.GenerateResource.Cache
+C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.csproj.CoreCompileInputs.cache
+C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.exe
+C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.pdb

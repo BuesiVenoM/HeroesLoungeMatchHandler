@@ -12,6 +12,7 @@ namespace WindowsFormsApplication1
 {
     public partial class Main : Form
     {
+        private bool isSwitched = false;
         private int scoreLeft;
         private int scoreRight;
         private int matchId;
@@ -20,6 +21,7 @@ namespace WindowsFormsApplication1
         private string streamTitle = "";
         private string path = "";
         private int maxTeamNameLength = 0;
+        private List<HeroesLoungeMatchHandler.Team> matchTeamsData;
 
         public Main()
         {
@@ -36,16 +38,21 @@ namespace WindowsFormsApplication1
             System.IO.Directory.CreateDirectory(path);
             get_meta_data(matchId);
             streamTitle = teamLeft + " vs. " + teamRight;
+            write_sources();
+        }
+
+        private void write_sources() {
+            System.IO.Directory.CreateDirectory(path);
             System.IO.File.WriteAllText(path + "teamLeft.txt", Convert.ToString(this.teamLeft));
             System.IO.File.WriteAllText(path + "teamRight.txt", Convert.ToString(this.teamRight));
             System.IO.File.WriteAllText(path + "streamTitle.txt", Convert.ToString(this.streamTitle));
-        }
-
-        private void btn_setScore_Click(object sender, EventArgs e)
-        {
-            System.IO.Directory.CreateDirectory(path);
             System.IO.File.WriteAllText(path + "scoreLeft.txt", Convert.ToString(this.scoreLeft));
             System.IO.File.WriteAllText(path + "scoreRight.txt", Convert.ToString(this.scoreRight));
+        }
+
+        private void btn_writeSources_Click(object sender, EventArgs e)
+        {
+            write_sources();
         }
 
         /// <summary>
@@ -63,6 +70,16 @@ namespace WindowsFormsApplication1
         /// <param name="scoreLeft">the left score</param>
         private void setScoreLeft(int scoreLeft) {
             this.scoreLeft = scoreLeft;
+
+        }
+
+        /// <summary>
+        /// Setter-method for matchTeamsData
+        /// </summary>
+        /// <param name="scoreLeft">the left score</param>
+        private void setMatchTeamsData(List<HeroesLoungeMatchHandler.Team> matchTeamsData)
+        {
+            this.matchTeamsData = matchTeamsData;
         }
 
         /// <summary>
@@ -72,6 +89,32 @@ namespace WindowsFormsApplication1
         private void setScoreRight(int scoreRight)
         {
             this.scoreRight = scoreRight;
+        }
+
+        /// <summary>
+        /// Setter-method for right score
+        /// </summary>
+        /// <param name="scoreRight">the right score</param>
+        private void setTeamRight(string teamRight)
+        {
+            this.teamRight = teamRight;
+        }
+
+        /// <summary>
+        /// Setter-method for right score
+        /// </summary>
+        /// <param name="scoreRight">the right score</param>
+        private void setTeamLeft(string teamLeft)
+        {
+            this.teamLeft = teamLeft;
+        }
+
+        /// <summary>
+        /// Setter-method for isSwitched
+        /// </summary>
+        /// <param name="isSwitched">Value if every param is switched</param>
+        private void setIsSwitched(bool isSwitched) {
+            this.isSwitched = isSwitched;
         }
 
         /// <summary>
@@ -128,22 +171,23 @@ namespace WindowsFormsApplication1
             /* getting the Data from the Website*/
             var matchdata = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Match>(wc.DownloadString(matchurl), settings);
             var matchteamsdataraw = wc.DownloadString(matchteamsurl);
-            var matchteamsdata = JsonConvert.DeserializeObject<List<HeroesLoungeMatchHandler.Team>>(matchteamsdataraw, settings);
+            List<HeroesLoungeMatchHandler.Team> matchTeamsData = JsonConvert.DeserializeObject<List<HeroesLoungeMatchHandler.Team>>(matchteamsdataraw, settings);
+            setMatchTeamsData(matchTeamsData);
 
             /* setting the Teams*/
-            teamLeft = matchteamsdata[0].title;
-            teamRight = matchteamsdata[1].title;
+            teamLeft = matchTeamsData[0].title;
+            teamRight = matchTeamsData[1].title;
 
             /* Check teamTitle-length and saving the Short-Version if its longer than in config */
             if(teamLeft.Length > maxTeamNameLength || teamRight.Length > maxTeamNameLength)
             {
-                teamLeft = matchteamsdata[0].slug;
-                teamRight = matchteamsdata[1].slug;
+                teamLeft = matchTeamsData[0].slug;
+                teamRight = matchTeamsData[1].slug;
             }
 
             /* generate team-logos */
-            String urlTeamPicLeft = "https://heroeslounge.gg/api/v1/teams/" + matchteamsdata[0].id + "/logo";
-            String urlTeamPicRight = "https://heroeslounge.gg/api/v1/teams/" + matchteamsdata[1].id + "/logo";
+            String urlTeamPicLeft = "https://heroeslounge.gg/api/v1/teams/" + matchTeamsData[0].id + "/logo";
+            String urlTeamPicRight = "https://heroeslounge.gg/api/v1/teams/" + matchTeamsData[1].id + "/logo";
 
             /* download and convert team-logos */
             var teamPicLeft = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Picture>(wc.DownloadString(urlTeamPicLeft), settings);
@@ -155,6 +199,30 @@ namespace WindowsFormsApplication1
         private void Main_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btn_switch_Click(object sender, EventArgs e)
+        {
+            setIsSwitched(!isSwitched);
+            // persist old data
+            int scoreLeftold = this.scoreLeft;
+            int scoreRightold = this.scoreRight;
+            string teamLeftold = this.teamLeft;
+            string teamRightold = this.teamRight;
+
+            // switch data
+            setScoreLeft(scoreRightold);
+            setScoreRight(scoreLeftold);
+            setTeamLeft(teamRightold);
+            setTeamRight(teamLeftold);
+
+            // write sources
+            write_sources();
+        }
+
+        private void btn_createTeamStatistics_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
