@@ -156,6 +156,7 @@ namespace WindowsFormsApplication1
 
             /* creating a Webclient for Web-downloads */
             WebClient wc = new WebClient();
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
             /* settings for the JSON-Serializer */
             var settings = new JsonSerializerSettings
@@ -193,8 +194,21 @@ namespace WindowsFormsApplication1
             /* download and convert team-logos */
             var teamPicLeft = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Picture>(wc.DownloadString(urlTeamPicLeft), settings);
             var teamPicRight = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Picture>(wc.DownloadString(urlTeamPicRight), settings);
-            teamPicLeft != null ? wc.DownloadFile(new Uri(teamPicLeft.path), path + @"teamLeft.png") : wc.DownloadFile(new Uri(teamPicDefaultURL), path + @"teamLeft.png");
-            teamPicRight != null ? wc.DownloadFile(new Uri(teamPicRight.path), path + @"teamRight.png") : wc.DownloadFile(new Uri(teamPicDefaultURL), path + @"teamRight.png");
+            if (teamPicLeft != null)
+            {
+                wc.DownloadFile(new Uri(teamPicLeft.path), path + @"teamLeft.png");
+            }
+            else {
+                wc.DownloadFile(new Uri(teamPicDefaultURL), path + @"teamLeft.png");
+            }
+            if (teamPicRight != null)
+            {
+                wc.DownloadFile(new Uri(teamPicRight.path), path + @"teamRight.png");
+            }
+            else
+            {
+                wc.DownloadFile(new Uri(teamPicDefaultURL), path + @"teamRight.png");
+            }
         }
 
         private void Main_Load(object sender, EventArgs e)
