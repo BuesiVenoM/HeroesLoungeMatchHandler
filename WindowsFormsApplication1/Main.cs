@@ -186,14 +186,15 @@ namespace WindowsFormsApplication1
             }
 
             /* generate team-logos */
+            String teamPicDefaultURL = "https://heroeslounge.gg/plugins/rikki/heroeslounge/assets/img/profile-icon.png";
             String urlTeamPicLeft = "https://heroeslounge.gg/api/v1/teams/" + matchTeamsData[0].id + "/logo";
             String urlTeamPicRight = "https://heroeslounge.gg/api/v1/teams/" + matchTeamsData[1].id + "/logo";
 
             /* download and convert team-logos */
             var teamPicLeft = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Picture>(wc.DownloadString(urlTeamPicLeft), settings);
             var teamPicRight = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Picture>(wc.DownloadString(urlTeamPicRight), settings);
-            wc.DownloadFile(new Uri(teamPicLeft.path), path + @"teamLeft.png");
-            wc.DownloadFile(new Uri(teamPicRight.path), path + @"teamRight.png");
+            teamPicLeft != null ? wc.DownloadFile(new Uri(teamPicLeft.path), path + @"teamLeft.png") : wc.DownloadFile(new Uri(teamPicDefaultURL), path + @"teamLeft.png");
+            teamPicRight != null ? wc.DownloadFile(new Uri(teamPicRight.path), path + @"teamRight.png") : wc.DownloadFile(new Uri(teamPicDefaultURL), path + @"teamRight.png");
         }
 
         private void Main_Load(object sender, EventArgs e)
