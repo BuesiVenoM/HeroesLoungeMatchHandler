@@ -3,7 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Windows.Forms;
+using HeroesLoungeMatchHandler;
 using HeroesLoungeMatchHandler.Properties;
+using Newtonsoft.Json.Serialization;
 
 /*
  * Programmed with love for HeroesLounge. By VenoM
@@ -168,8 +170,6 @@ namespace WindowsFormsApplication1
             /* creating the urls based on the given match-id */
             String matchurl = "https://heroeslounge.gg/api/v1/matches/" + matchId;
             String matchteamsurl = matchurl + "/teams";
-            
-            /* getting the Data from the Website*/
             var matchdata = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Match>(wc.DownloadString(matchurl), settings);
             var matchteamsdataraw = wc.DownloadString(matchteamsurl);
             List<HeroesLoungeMatchHandler.Team> matchTeamsData = JsonConvert.DeserializeObject<List<HeroesLoungeMatchHandler.Team>>(matchteamsdataraw, settings);

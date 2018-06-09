@@ -55,3 +55,4 @@ C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\ob
 C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.csproj.CoreCompileInputs.cache
 C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.exe
 C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.pdb
+C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.csproj.CopyComplete
