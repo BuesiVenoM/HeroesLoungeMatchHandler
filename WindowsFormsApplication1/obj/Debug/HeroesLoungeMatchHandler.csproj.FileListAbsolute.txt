@@ -26,7 +26,6 @@ C:\Users\sebrun\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\b
 C:\Users\sebrun\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Debug\Newtonsoft.Json.dll
 C:\Users\sebrun\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Debug\Newtonsoft.Json.pdb
 C:\Users\sebrun\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Debug\Newtonsoft.Json.xml
-C:\Users\sebrun\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.csprojResolveAssemblyReference.cache
 C:\Users\sebrun\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\WindowsFormsApplication1.Main.resources
 C:\Users\sebrun\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.Properties.Resources.resources
 C:\Users\sebrun\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.csproj.GenerateResource.Cache
@@ -56,3 +55,6 @@ C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\ob
 C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.exe
 C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.pdb
 C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.csproj.CopyComplete
+C:\Users\sebrun\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.csprojAssemblyReference.cache
+C:\Users\sebrun\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.csproj.CoreCompileInputs.cache
+C:\Users\sebrun\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Debug\HeroesLoungeMatchHandler.csproj.CopyComplete

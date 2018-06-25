@@ -24,6 +24,7 @@ namespace WindowsFormsApplication1
         private string path = "";
         private int maxTeamNameLength = 0;
         private List<HeroesLoungeMatchHandler.Team> matchTeamsData;
+        private Match matchData;
 
         public Main()
         {
@@ -50,6 +51,11 @@ namespace WindowsFormsApplication1
             System.IO.File.WriteAllText(path + "streamTitle.txt", Convert.ToString(this.streamTitle));
             System.IO.File.WriteAllText(path + "scoreLeft.txt", Convert.ToString(this.scoreLeft));
             System.IO.File.WriteAllText(path + "scoreRight.txt", Convert.ToString(this.scoreRight));
+
+            String url = generateDivURLFromMatchID(matchData.div_id);
+            webBrowser_div.Navigate(new Uri(url));
+            webBrowser_teamLeft.Navigate(new Uri("https://heroeslounge.gg/team/view/" + matchTeamsData[0].slug));
+            webBrowser_teamRight.Navigate(new Uri("https://heroeslounge.gg/team/view/" + matchTeamsData[1].slug));
         }
 
         private void btn_writeSources_Click(object sender, EventArgs e)
@@ -152,8 +158,8 @@ namespace WindowsFormsApplication1
              * spec. m https://heroeslounge.gg/api/v1/matches/7
              * teams to match: https://heroeslounge.gg/api/v1/matches/7/teams
              * teams https://heroeslounge.gg/api/v1/teams/
-             * spec team: https://heroeslounge.gg/api/v1/team/1
-             * team-pic: https://heroeslounge.gg/api/v1/team/1/logo
+             * spec team: https://heroeslounge.gg/api/v1/teams/1
+             * team-pic: https://heroeslounge.gg/api/v1/teams/1/logo
              * */
 
             /* creating a Webclient for Web-downloads */
@@ -170,11 +176,11 @@ namespace WindowsFormsApplication1
             /* creating the urls based on the given match-id */
             String matchurl = "https://heroeslounge.gg/api/v1/matches/" + matchId;
             String matchteamsurl = matchurl + "/teams";
-            var matchdata = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Match>(wc.DownloadString(matchurl), settings);
+            matchData = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Match>(wc.DownloadString(matchurl), settings);
             var matchteamsdataraw = wc.DownloadString(matchteamsurl);
             List<HeroesLoungeMatchHandler.Team> matchTeamsData = JsonConvert.DeserializeObject<List<HeroesLoungeMatchHandler.Team>>(matchteamsdataraw, settings);
             setMatchTeamsData(matchTeamsData);
-
+            
             /* setting the Teams*/
             teamLeft = matchTeamsData[0].title;
             teamRight = matchTeamsData[1].title;
@@ -224,6 +230,9 @@ namespace WindowsFormsApplication1
             int scoreRightold = this.scoreRight;
             string teamLeftold = this.teamLeft;
             string teamRightold = this.teamRight;
+            string lblTxtRightold = this.lbl_stat_teamRight.Text;
+            string lblTxtLeftold = this.lbl_stat_teamLeft.Text;
+
 
             // switch data
             setScoreLeft(scoreRightold);
@@ -231,13 +240,54 @@ namespace WindowsFormsApplication1
             setTeamLeft(teamRightold);
             setTeamRight(teamLeftold);
 
+            nud_leftScore.Value = scoreRightold;
+            nud_rightScore.Value = scoreLeftold;
+
+            lbl_stat_teamLeft.Text = lblTxtRightold;
+            lbl_stat_teamRight.Text = lblTxtLeftold;
+
             // write sources
             write_sources();
         }
 
-        private void btn_createTeamStatistics_Click(object sender, EventArgs e)
+        private string generateDivURLFromMatchID(int divID)
         {
-            
+            String divURL;
+            /* creating a Webclient for Web-downloads */
+            WebClient wc = new WebClient();
+            System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+
+            /* settings for the JSON-Serializer */
+            var settings = new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore,
+                MissingMemberHandling = MissingMemberHandling.Ignore
+            };
+
+            /* creating the urls based on the given match-id */
+            String divurl = "https://heroeslounge.gg/api/v1/divisions/" + divID;
+            var divData = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Division>(wc.DownloadString(divurl), settings);
+
+            String seasonurl = "https://heroeslounge.gg/api/v1/seasons/" + divData.season_id;
+            var seasonData = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Seasons>(wc.DownloadString(seasonurl), settings);
+
+            divURL = "https://heroeslounge.gg/" + seasonData.slug + "/" + divData.slug;
+            return divURL;
+        }
+
+        private void webBrowser_teamLeft_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            webBrowser_teamLeft.Document.Body.Style = "zoom:80%;";
+        }
+
+        private void webBrowser_div_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            webBrowser_div.Document.Body.Style = "zoom:80%;";
+        }
+
+        private void webBrowser_teamRight_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            webBrowser_teamRight.Document.Body.Style = "zoom:80%;";
         }
     }
 }
