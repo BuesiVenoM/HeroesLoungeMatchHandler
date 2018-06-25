@@ -32,6 +32,8 @@ namespace WindowsFormsApplication1
         private int maxTeamNameLength = 0;
         private List<HeroesLoungeMatchHandler.Team> matchTeamsData;
         private Match matchData;
+        private Division divData;
+        private Seasons seasonData;
 
         public Main()
         {
@@ -290,10 +292,10 @@ namespace WindowsFormsApplication1
 
             /* creating the urls based on the given match-id */
             String divurl = "https://heroeslounge.gg/api/v1/divisions/" + divID;
-            var divData = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Division>(wc.DownloadString(divurl), settings);
+            divData = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Division>(wc.DownloadString(divurl), settings);
 
             String seasonurl = "https://heroeslounge.gg/api/v1/seasons/" + divData.season_id;
-            var seasonData = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Seasons>(wc.DownloadString(seasonurl), settings);
+            seasonData = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Seasons>(wc.DownloadString(seasonurl), settings);
 
             divURL = "https://heroeslounge.gg/" + seasonData.slug + "/" + divData.slug;
             return divURL;
@@ -320,18 +322,33 @@ namespace WindowsFormsApplication1
 
             var section = document.AddSection();
             section.PageSetup.Orientation = Orientation.Landscape;
+            section.AddParagraph(seasonData.slug + " / " + divData.slug + " / " + teamLeft + " VS. " + teamRight + " " + matchData.tbp);
 
             Table table = section.AddTable();
             table.Borders.Width = 0.25;
             table.Rows.LeftIndent = 0;
 
             Column column = table.AddColumn("7cm");
-            column.Format.Alignment = ParagraphAlignment.Center;
+            Column column2 = table.AddColumn("7cm");
+            Column column3 = table.AddColumn("7cm");
+            Column column4 = table.AddColumn("7cm");
+            Column column5 = table.AddColumn("7cm");
+            Column column6 = table.AddColumn("7cm");
+            Column column7 = table.AddColumn("7cm");
+            column.Format.Alignment = ParagraphAlignment.Left;
+            column2.Format.Alignment = ParagraphAlignment.Center;
+            column3.Format.Alignment = ParagraphAlignment.Center;
+            column4.Format.Alignment = ParagraphAlignment.Center;
+            column5.Format.Alignment = ParagraphAlignment.Center;
+            column6.Format.Alignment = ParagraphAlignment.Center;
+            column7.Format.Alignment = ParagraphAlignment.Center;
 
             Row row = table.AddRow();
             row.Cells[0].AddParagraph(teamLeft);
             Row row2 = table.AddRow();
-            row2.Cells[0].AddParagraph(teamRight);
+            row.Cells[0].AddParagraph(teamRight);
+
+
 
             var pdfRenderer = new PdfDocumentRenderer(false) { Document = document };
 
