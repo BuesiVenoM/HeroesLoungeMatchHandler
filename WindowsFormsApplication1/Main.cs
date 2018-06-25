@@ -1,11 +1,17 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Net;
 using System.Windows.Forms;
 using HeroesLoungeMatchHandler;
 using HeroesLoungeMatchHandler.Properties;
+using MigraDoc.DocumentObjectModel;
+using MigraDoc.DocumentObjectModel.Tables;
+using MigraDoc.Rendering;
 using Newtonsoft.Json.Serialization;
+using PdfSharp.Pdf;
+using Orientation = MigraDoc.DocumentObjectModel.Orientation;
 
 /*
  * Programmed with love for HeroesLounge. By VenoM
@@ -22,6 +28,7 @@ namespace WindowsFormsApplication1
         private string teamRight = "";
         private string streamTitle = "";
         private string path = "";
+        private string url = "";
         private int maxTeamNameLength = 0;
         private List<HeroesLoungeMatchHandler.Team> matchTeamsData;
         private Match matchData;
@@ -52,10 +59,16 @@ namespace WindowsFormsApplication1
             System.IO.File.WriteAllText(path + "scoreLeft.txt", Convert.ToString(this.scoreLeft));
             System.IO.File.WriteAllText(path + "scoreRight.txt", Convert.ToString(this.scoreRight));
 
-            String url = generateDivURLFromMatchID(matchData.div_id);
-            webBrowser_div.Navigate(new Uri(url));
-            webBrowser_teamLeft.Navigate(new Uri("https://heroeslounge.gg/team/view/" + matchTeamsData[0].slug));
-            webBrowser_teamRight.Navigate(new Uri("https://heroeslounge.gg/team/view/" + matchTeamsData[1].slug));
+            try
+            {
+                webBrowser_div.Navigate(new Uri(url));
+                webBrowser_teamLeft.Navigate(new Uri("https://heroeslounge.gg/team/view/" + matchTeamsData[0].slug));
+                webBrowser_teamRight.Navigate(new Uri("https://heroeslounge.gg/team/view/" + matchTeamsData[1].slug));
+            }
+            catch (Exception e)
+            {
+
+            }
         }
 
         private void btn_writeSources_Click(object sender, EventArgs e)
@@ -176,45 +189,56 @@ namespace WindowsFormsApplication1
             /* creating the urls based on the given match-id */
             String matchurl = "https://heroeslounge.gg/api/v1/matches/" + matchId;
             String matchteamsurl = matchurl + "/teams";
-            matchData = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Match>(wc.DownloadString(matchurl), settings);
-            var matchteamsdataraw = wc.DownloadString(matchteamsurl);
-            List<HeroesLoungeMatchHandler.Team> matchTeamsData = JsonConvert.DeserializeObject<List<HeroesLoungeMatchHandler.Team>>(matchteamsdataraw, settings);
-            setMatchTeamsData(matchTeamsData);
-            
-            /* setting the Teams*/
-            teamLeft = matchTeamsData[0].title;
-            teamRight = matchTeamsData[1].title;
 
-            /* Check teamTitle-length and saving the Short-Version if its longer than in config */
-            if(teamLeft.Length > maxTeamNameLength || teamRight.Length > maxTeamNameLength)
+            try
             {
-                teamLeft = matchTeamsData[0].slug;
-                teamRight = matchTeamsData[1].slug;
+                matchData = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Match>(wc.DownloadString(matchurl), settings);
+                var matchteamsdataraw = wc.DownloadString(matchteamsurl);
+                List<HeroesLoungeMatchHandler.Team> matchTeamsData = JsonConvert.DeserializeObject<List<HeroesLoungeMatchHandler.Team>>(matchteamsdataraw, settings);
+                setMatchTeamsData(matchTeamsData);
+
+                /* setting the Teams*/
+                teamLeft = matchTeamsData[0].title;
+                teamRight = matchTeamsData[1].title;
+
+                /* Check teamTitle-length and saving the Short-Version if its longer than in config */
+                if (teamLeft.Length > maxTeamNameLength || teamRight.Length > maxTeamNameLength)
+                {
+                    teamLeft = matchTeamsData[0].slug;
+                    teamRight = matchTeamsData[1].slug;
+                }
+
+                /* generate team-logos */
+                String teamPicDefaultURL = "https://heroeslounge.gg/plugins/rikki/heroeslounge/assets/img/profile-icon.png";
+                String urlTeamPicLeft = "https://heroeslounge.gg/api/v1/teams/" + matchTeamsData[0].id + "/logo";
+                String urlTeamPicRight = "https://heroeslounge.gg/api/v1/teams/" + matchTeamsData[1].id + "/logo";
+
+                /* download and convert team-logos */
+                var teamPicLeft = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Picture>(wc.DownloadString(urlTeamPicLeft), settings);
+                var teamPicRight = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Picture>(wc.DownloadString(urlTeamPicRight), settings);
+                if (teamPicLeft != null)
+                {
+                    wc.DownloadFile(new Uri(teamPicLeft.path), path + @"teamLeft.png");
+                }
+                else
+                {
+                    wc.DownloadFile(new Uri(teamPicDefaultURL), path + @"teamLeft.png");
+                }
+                if (teamPicRight != null)
+                {
+                    wc.DownloadFile(new Uri(teamPicRight.path), path + @"teamRight.png");
+                }
+                else
+                {
+                    wc.DownloadFile(new Uri(teamPicDefaultURL), path + @"teamRight.png");
+                }
+                url = generateDivURLFromMatchID(matchData.div_id);
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("how should I assume which mach-ID you want to cast!?!");
             }
 
-            /* generate team-logos */
-            String teamPicDefaultURL = "https://heroeslounge.gg/plugins/rikki/heroeslounge/assets/img/profile-icon.png";
-            String urlTeamPicLeft = "https://heroeslounge.gg/api/v1/teams/" + matchTeamsData[0].id + "/logo";
-            String urlTeamPicRight = "https://heroeslounge.gg/api/v1/teams/" + matchTeamsData[1].id + "/logo";
-
-            /* download and convert team-logos */
-            var teamPicLeft = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Picture>(wc.DownloadString(urlTeamPicLeft), settings);
-            var teamPicRight = JsonConvert.DeserializeObject<HeroesLoungeMatchHandler.Picture>(wc.DownloadString(urlTeamPicRight), settings);
-            if (teamPicLeft != null)
-            {
-                wc.DownloadFile(new Uri(teamPicLeft.path), path + @"teamLeft.png");
-            }
-            else {
-                wc.DownloadFile(new Uri(teamPicDefaultURL), path + @"teamLeft.png");
-            }
-            if (teamPicRight != null)
-            {
-                wc.DownloadFile(new Uri(teamPicRight.path), path + @"teamRight.png");
-            }
-            else
-            {
-                wc.DownloadFile(new Uri(teamPicDefaultURL), path + @"teamRight.png");
-            }
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -288,6 +312,35 @@ namespace WindowsFormsApplication1
         private void webBrowser_teamRight_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             webBrowser_teamRight.Document.Body.Style = "zoom:80%;";
+        }
+
+        private void btn_printCasterHelpSheet_Click(object sender, EventArgs e)
+        {
+            Document document = new Document();
+
+            var section = document.AddSection();
+            section.PageSetup.Orientation = Orientation.Landscape;
+
+            Table table = section.AddTable();
+            table.Borders.Width = 0.25;
+            table.Rows.LeftIndent = 0;
+
+            Column column = table.AddColumn("7cm");
+            column.Format.Alignment = ParagraphAlignment.Center;
+
+            Row row = table.AddRow();
+            row.Cells[0].AddParagraph(teamLeft);
+            Row row2 = table.AddRow();
+            row2.Cells[0].AddParagraph(teamRight);
+
+            var pdfRenderer = new PdfDocumentRenderer(false) { Document = document };
+
+            pdfRenderer.RenderDocument();
+
+            const string filename = "TableTest.pdf";
+            pdfRenderer.PdfDocument.Save(filename);
+
+            Process.Start(filename);
         }
     }
 }
