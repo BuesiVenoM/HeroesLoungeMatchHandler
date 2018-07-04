@@ -1,0 +1,13 @@
+C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Release\HeroesLoungeMatchHandler.exe.config
+C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Release\HeroesLoungeMatchHandler.exe
+C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Release\HeroesLoungeMatchHandler.pdb
+C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Release\Newtonsoft.Json.dll
+C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Release\Newtonsoft.Json.pdb
+C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\bin\Release\Newtonsoft.Json.xml
+C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Release\WindowsFormsApplication1.Main.resources
+C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Release\HeroesLoungeMatchHandler.Properties.Resources.resources
+C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Release\HeroesLoungeMatchHandler.csproj.GenerateResource.cache
+C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Release\HeroesLoungeMatchHandler.csproj.CoreCompileInputs.cache
+C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Release\HeroesLoungeMatchHandler.csproj.CopyComplete
+C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Release\HeroesLoungeMatchHandler.exe
+C:\Users\sebas\Source\Repos\HeroesLoungeMatchHandler\WindowsFormsApplication1\obj\Release\HeroesLoungeMatchHandler.pdb
