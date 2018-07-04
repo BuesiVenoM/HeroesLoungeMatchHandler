@@ -328,26 +328,45 @@ namespace WindowsFormsApplication1
             table.Borders.Width = 0.25;
             table.Rows.LeftIndent = 0;
 
-            Column column = table.AddColumn("7cm");
-            Column column2 = table.AddColumn("7cm");
-            Column column3 = table.AddColumn("7cm");
-            Column column4 = table.AddColumn("7cm");
-            Column column5 = table.AddColumn("7cm");
-            Column column6 = table.AddColumn("7cm");
-            Column column7 = table.AddColumn("7cm");
+            Column column = table.AddColumn("2.5cm");
+            Column column2 = table.AddColumn("3.5cm");
+            Column column3 = table.AddColumn("1.5cm");
+            Column column4 = table.AddColumn("4cm");
+            Column column5 = table.AddColumn("2.5cm");
+            Column column6 = table.AddColumn("3.5cm");
+            Column column7 = table.AddColumn("1.5cm");
+            Column column8 = table.AddColumn("4cm");
             column.Format.Alignment = ParagraphAlignment.Left;
             column2.Format.Alignment = ParagraphAlignment.Center;
             column3.Format.Alignment = ParagraphAlignment.Center;
-            column4.Format.Alignment = ParagraphAlignment.Center;
+            column4.Format.Alignment = ParagraphAlignment.Left;
             column5.Format.Alignment = ParagraphAlignment.Center;
             column6.Format.Alignment = ParagraphAlignment.Center;
             column7.Format.Alignment = ParagraphAlignment.Center;
 
             Row row = table.AddRow();
-            row.Cells[0].AddParagraph(teamLeft);
+            row.Cells[0].AddParagraph("Team left:");
+            row.Cells[1].AddParagraph(teamLeft);
+            row.Cells[2].AddParagraph("");
+            row.Cells[3].AddParagraph("");
+            row.Cells[4].AddParagraph("Team right:");
+            row.Cells[5].AddParagraph(teamRight);
+            row.Cells[6].AddParagraph("");
+            row.Cells[7].AddParagraph("");
             Row row2 = table.AddRow();
-            row.Cells[0].AddParagraph(teamRight);
-
+            row2.Cells[0].AddParagraph("Playername");
+            row2.Cells[1].AddParagraph("Role");
+            row2.Cells[2].AddParagraph("Plays");
+            row2.Cells[3].AddParagraph("Notes");
+            row2.Cells[4].AddParagraph("Playername");
+            row2.Cells[5].AddParagraph("Role");
+            row2.Cells[6].AddParagraph("Plays");
+            row2.Cells[7].AddParagraph("Notes");
+            Row row3 = table.AddRow();
+            Row row4 = table.AddRow();
+            Row row5 = table.AddRow();
+            Row row6 = table.AddRow();
+            Row row7 = table.AddRow();
 
 
             var pdfRenderer = new PdfDocumentRenderer(false) { Document = document };
