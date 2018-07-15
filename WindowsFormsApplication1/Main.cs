@@ -2,7 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Net;
+using System.Text;
 using System.Windows.Forms;
 using HeroesLoungeMatchHandler;
 using HeroesLoungeMatchHandler.Properties;
@@ -45,7 +47,7 @@ namespace WindowsFormsApplication1
         /// <summary>
         /// Writes the txt-files
         /// </summary>
-        private void btn_refresh_Click(object sender, EventArgs e)
+        private void btn_initiate_data_Click(object sender, EventArgs e)
         {
             System.IO.Directory.CreateDirectory(path);
             get_meta_data(matchId);
@@ -60,16 +62,18 @@ namespace WindowsFormsApplication1
             System.IO.File.WriteAllText(path + "streamTitle.txt", Convert.ToString(this.streamTitle));
             System.IO.File.WriteAllText(path + "scoreLeft.txt", Convert.ToString(this.scoreLeft));
             System.IO.File.WriteAllText(path + "scoreRight.txt", Convert.ToString(this.scoreRight));
-
-            try
+            if (cB1_statsOnOff.Checked == true)
             {
-                webBrowser_div.Navigate(new Uri(url));
-                webBrowser_teamLeft.Navigate(new Uri("https://heroeslounge.gg/team/view/" + matchTeamsData[0].slug));
-                webBrowser_teamRight.Navigate(new Uri("https://heroeslounge.gg/team/view/" + matchTeamsData[1].slug));
-            }
-            catch (Exception e)
-            {
-
+                try
+                {
+                    webBrowser_div.Navigate(new Uri(url));
+                    webBrowser_teamLeft.Navigate(new Uri("https://heroeslounge.gg/team/view/" + matchTeamsData[0].slug));
+                    webBrowser_teamRight.Navigate(new Uri("https://heroeslounge.gg/team/view/" + matchTeamsData[1].slug));
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.ToString());
+                }
             }
         }
 
@@ -238,7 +242,7 @@ namespace WindowsFormsApplication1
             }
             catch (Exception e)
             {
-                MessageBox.Show("how should I assume which mach-ID you want to cast!?!");
+                MessageBox.Show("Match-ID is wrong or not typed... how should I assume which mach-ID you want to cast!?!");
             }
 
         }
@@ -271,9 +275,6 @@ namespace WindowsFormsApplication1
 
             lbl_stat_teamLeft.Text = lblTxtRightold;
             lbl_stat_teamRight.Text = lblTxtLeftold;
-
-            // write sources
-            write_sources();
         }
 
         private string generateDivURLFromMatchID(int divID)
@@ -323,7 +324,6 @@ namespace WindowsFormsApplication1
             var section = document.AddSection();
             section.PageSetup.Orientation = Orientation.Landscape;
             section.AddParagraph(seasonData.slug + " / " + divData.slug + " / " + teamLeft + " VS. " + teamRight + " " + matchData.tbp);
-
             Table table = section.AddTable();
             table.Borders.Width = 0.25;
             table.Rows.LeftIndent = 0;
@@ -367,13 +367,22 @@ namespace WindowsFormsApplication1
             Row row5 = table.AddRow();
             Row row6 = table.AddRow();
             Row row7 = table.AddRow();
+            Row row8 = table.AddRow();
+            Row row9 = table.AddRow();
+            row3.Height = "1.5cm";
+            row4.Height = "1.5cm";
+            row5.Height = "1.5cm";
+            row6.Height = "1.5cm";
+            row7.Height = "1.5cm";
+            row8.Height = "1.5cm";
+            row9.Height = "1.5cm";
 
 
             var pdfRenderer = new PdfDocumentRenderer(false) { Document = document };
 
             pdfRenderer.RenderDocument();
-
-            const string filename = "TableTest.pdf";
+            String pdfName = seasonData.slug + divData.slug + teamLeft + teamRight + matchData.tbp + ".pdf";
+            String filename = pdfName.Replace(" ", string.Empty).Replace(":", string.Empty).Replace("/", string.Empty).Replace("-", string.Empty);
             pdfRenderer.PdfDocument.Save(filename);
 
             Process.Start(filename);
