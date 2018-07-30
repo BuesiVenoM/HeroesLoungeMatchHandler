@@ -263,7 +263,6 @@ namespace WindowsFormsApplication1
             string lblTxtRightold = this.lbl_stat_teamRight.Text;
             string lblTxtLeftold = this.lbl_stat_teamLeft.Text;
 
-
             // switch data
             setScoreLeft(scoreRightold);
             setScoreRight(scoreLeftold);
@@ -275,6 +274,10 @@ namespace WindowsFormsApplication1
 
             lbl_stat_teamLeft.Text = lblTxtRightold;
             lbl_stat_teamRight.Text = lblTxtLeftold;
+
+            System.IO.File.Move(path + @"teamLeft.png", path + @"teamRight2.png");
+            System.IO.File.Move(path + @"teamRight.png", path + @"teamLeft.png");
+            System.IO.File.Move(path + @"teamRight2.png", path + @"teamRight.png");
         }
 
         private string generateDivURLFromMatchID(int divID)
